@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+import Services from './components/pages/Services';
+import Products from './components/pages/Products';
+import Registration from './components/pages/Registration';
+import LoginPage from './components/pages/LoginPage';
+import axios from 'axios';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('userId') !== null);
+  const [userName, setUserName] = useState("");
+
+  const fetchUserName = async () => {
+    try {
+      const userId = sessionStorage.getItem('userId');
+      if (userId) {
+        const response = await axios.get(`https://wealthy-wired-kodiak.ngrok-free.app/users/${userId}`);
+        const userData = response.data;
+        setUserName(userData);
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUserName();
+    }
+  }, [isLoggedIn]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar isLoggedIn={isLoggedIn} userName={userName} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/register' element={<Registration />} />
+        <Route
+          path='/login'
+          element={<LoginPage onLogin={() => setIsLoggedIn(true)} />}
+        />
+      </Routes>
+    </Router>
   );
 }
 
