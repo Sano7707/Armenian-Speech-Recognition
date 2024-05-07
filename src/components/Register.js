@@ -19,7 +19,7 @@ function Register() {
         password
       };
 
-      const response = await axios.post('https://wealthy-wired-kodiak.ngrok-free.app/register', userData);
+      const response = await axios.post('http://20.52.101.91:8081/register', userData);
 
       if (response.status === 201) {
         console.log('User registered:', response.data);
@@ -39,7 +39,7 @@ function Register() {
       <div className='centered-container'>
         <div className="login-container">
           <h1>Registration is successful!</h1>
-          <p>Verification link is sent to your account</p>
+          <p>Verification link is sent to your email</p>
           <div className="registration-link">
             <p>To access your account <a href="/">Login here</a></p>
           </div>

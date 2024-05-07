@@ -7,11 +7,12 @@ function LoginPage({ onLogin }) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
+  axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'true';
 
 
   const handleLogin = async () => {
     try {
-      const url = `https://wealthy-wired-kodiak.ngrok-free.app/login?email=${email}&password=${password}`;
+      const url = `http://20.52.101.91:8081/login?email=${email}&password=${password}`;
       const response = await axios.get(url);
       const userData = response.data;
       // Save user ID in session storage
