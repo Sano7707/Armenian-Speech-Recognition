@@ -1,79 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 function Footer() {
+  const [email, setEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Invalid email format');
+      return;
+    }
+
+    setLoading(true); // Set loading state to true when subscription request starts
+  
+    try {
+      const response = await fetch(`http://20.52.101.91:8081/subscribe?email=${email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      
+      if (response.ok) {
+        console.log('Subscription successful!');
+        setErrorMessage('Successfully subscribed!');
+        setEmail('');
+      } else if(response.status === 409) {
+        console.error('Subscription failed');
+        setErrorMessage('Email already subscribed!');
+        setEmail('');
+      }
+      else {
+        console.error('Subscription failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false); // Reset loading state when subscription request completes
+    }
+  };
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+    setErrorMessage(''); // Clear error message when user types in the input
+  };
+
   return (
     <div className='footer-container'>
       <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
-        Provide your email address for updates about our Armenian speech recognition project</p>
+          Provide your email address for updates about our Armenian speech recognition project
+        </p>
         <p className='footer-subscription-text'>
           You can unsubscribe at any time.
         </p>
         <div className='input-areas'>
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Your Email'
-            />
-            <Button buttonStyle='btn--outline'>Subscribe</Button>
-          </form>
+          <input
+            className={`footer-input ${errorMessage && 'invalid'}`}
+            name='email'
+            type='email'
+            placeholder={errorMessage || 'Your Email'}
+            value={email}
+            onChange={handleChange}
+          />
+          <CustomButton onClick={handleSubscribe} disabled={loading}>
+            {loading ? 'Subscribing...' : 'Subscribe'}
+          </CustomButton>
         </div>
+        {errorMessage && <p className='error-message'>{errorMessage}</p>}
       </section>
     
-      <section class='social-media'>
-        <div class='social-media-wrap'>
-          <small class='website-rights'>Armenian Speech Recognition © 2024 All rights reserved.</small>
-          <div class='social-icons'>
-            <Link
-              class='social-icon-link facebook'
-              to='/'
-              target='_blank'
-              aria-label='Facebook'
-            >
-              <i class='fab fa-facebook-f' />
-            </Link>
-            <Link
-              class='social-icon-link instagram'
-              to='/'
-              target='_blank'
-              aria-label='Instagram'
-            >
-              <i class='fab fa-instagram' />
-            </Link>
-            <Link
-              class='social-icon-link youtube'
-              to='/'
-              target='_blank'
-              aria-label='Youtube'
-            >
-              <i class='fab fa-youtube' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
-              aria-label='Twitter'
-            >
-              <i class='fab fa-twitter' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
-              aria-label='LinkedIn'
-            >
-              <i class='fab fa-linkedin' />
-            </Link>
+      <section className='social-media'>
+        <div className='social-media-wrap'>
+          <small className='website-rights'>Armenian Speech Recognition © 2024 All rights reserved.</small>
+          <div className='social-icons'>
           </div>
         </div>
       </section>
     </div>
   );
 }
+
+const CustomButton = ({ onClick, disabled, children }) => (
+  <button className='custom-button' onClick={onClick} disabled={disabled}>
+    {children}
+  </button>
+);
 
 export default Footer;
