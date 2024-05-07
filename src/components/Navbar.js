@@ -15,9 +15,7 @@ function Navbar({ isLoggedIn,userName }) {
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
-      // Clear userId from session storage
       sessionStorage.removeItem('userId');
-      // Reload the page to update the Navbar
       navigate('/');
       window.location.reload();
     }

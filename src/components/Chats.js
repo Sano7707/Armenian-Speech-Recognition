@@ -36,8 +36,11 @@ function Chats() {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch(`https://wealthy-wired-kodiak.ngrok-free.app/users/${userId}/chats`, {
+      const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats`, {
         method: 'GET',
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+        },
       });
       if (!response.ok) {
         throw new Error('Network response was not ok.');
@@ -133,7 +136,7 @@ function Chats() {
       setLoading(true);
       formData.append('chatTitle',user.chats[activeChatIndex].title);
       formData.append('url',youtubeLink);
-      fetch(`https://wealthy-wired-kodiak.ngrok-free.app/process-audio-link/${userId}`, {
+      fetch(`http://20.52.101.91:8081/process-audio-link/${userId}`, {
         method: 'POST',
         body: formData
       })
@@ -186,7 +189,7 @@ function Chats() {
   
   
   const sendFormData = (formData) => {
-    fetch(`https://wealthy-wired-kodiak.ngrok-free.app/process-audio/${userId}`, {
+    fetch(`http://20.52.101.91:8081/process-audio/${userId}`, {
       method: 'POST',
       body: formData,
     })
@@ -216,7 +219,7 @@ function Chats() {
     if (newChatTitle.trim() !== "") {
       const chatTitle = encodeURIComponent(newChatTitle.trim());
       try {
-        const response = await fetch(`https://wealthy-wired-kodiak.ngrok-free.app/users/${userId}/chats?chatTitle=${chatTitle}`, {
+        const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats?chatTitle=${chatTitle}`, {
           method: 'POST',
         });
         if (response.ok) {
@@ -241,7 +244,7 @@ function Chats() {
     if (chatToDelete !== null) {
       const chatTitle = user.chats[chatToDelete].title;
       try {
-        const response = await fetch(`https://wealthy-wired-kodiak.ngrok-free.app/users/${userId}/chats?chatTitle=${encodeURIComponent(chatTitle)}`, {
+        const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats?chatTitle=${encodeURIComponent(chatTitle)}`, {
           method: 'DELETE'
         });
         if (response.ok) {
@@ -343,6 +346,8 @@ function Chats() {
               <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} disabled={youtubeLink}>
                 <option value="Microsoft Azure">Microsoft Azure</option>
                 <option value="Whisper Small">Whisper Small</option>
+                <option value="Wav2Vec2-BERT">Wav2Vec2-BERT</option>
+
               </select>
             </div>
             <button className="get-transcriptions-btn" onClick={handleGetTranscriptions}>Get my transcriptions</button>
@@ -393,7 +398,11 @@ const ChatMessage = ({ message }) => {
 
   useEffect(() => {
     if (message.user === "me") {
-      fetch(`https://wealthy-wired-kodiak.ngrok-free.app/audio/${encodeURIComponent(message.message)}`)
+      fetch(`http://20.52.101.91:8081/audio/${encodeURIComponent(message.message)}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true',
+        // other headers if needed
+      },})
         .then(response => response.blob())
         .then(blob => {
           setAudioUrl(URL.createObjectURL(blob));

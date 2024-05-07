@@ -75,7 +75,8 @@ function Recorder() {
     if (youtubeLink) {
       setProcessing(true);
       setLoading(true);
-      fetch(`https://wealthy-wired-kodiak.ngrok-free.app/process-audio-link?url=${youtubeLink}`, {
+      //http://http://20.52.101.91:8081
+      fetch(`http://20.52.101.91:8081/process-audio-link?url=${youtubeLink}`, {
         method: 'POST',
       })
         .then((response) => response.text())
@@ -117,7 +118,7 @@ function Recorder() {
   };
 
   const sendFormData = (formData) => {
-    fetch('https://wealthy-wired-kodiak.ngrok-free.app/process-audio', {
+    fetch('http://20.52.101.91:8081/process-audio', {
       method: 'POST',
       body: formData,
     })
@@ -192,6 +193,7 @@ function Recorder() {
             <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} disabled={youtubeLink}>
               <option value="Microsoft Azure">Microsoft Azure</option>
               <option value="Whisper Small">Whisper Small</option>
+              <option value="Wav2Vec2-BERT">Wav2Vec2-BERT</option>
             </select>
           </div>
           <textarea

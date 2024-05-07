@@ -11,12 +11,14 @@ import axios from 'axios';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('userId') !== null);
   const [userName, setUserName] = useState("");
+  axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'true';
+
 
   const fetchUserName = async () => {
     try {
       const userId = sessionStorage.getItem('userId');
       if (userId) {
-        const response = await axios.get(`https://wealthy-wired-kodiak.ngrok-free.app/users/${userId}`);
+        const response = await axios.get(`http://20.52.101.91:8081/users/${userId}`);
         const userData = response.data;
         setUserName(userData);
       }
