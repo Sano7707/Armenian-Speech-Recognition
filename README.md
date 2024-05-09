@@ -32,4 +32,12 @@ The project is deployed on the Azure Cloud platform, leveraging virtual machine 
 ## Resources
  Link to the folder with all trained models and notebooks.
 - [Transcription and model training notebooks](https://drive.google.com/drive/folders/1hTKSVjQSFG6m72KipGYokaHbaiU48plF)
+- [w2v-bert-2.0-armenian-CV17.0](https://huggingface.co/anah1tbaghdassarian/w2v-bert-2.0-armenian-CV17.0)
+
+- [quartznet15x5_armenian-CV17.0_WER11.75](https://huggingface.co/anah1tbaghdassarian/stt_hy-AM_quartznet15x5_armenian-CV17.0_WER11.75)
+
+- [w2v-bert-2.0-armenian-colab-CV17.0_10epochs](https://huggingface.co/anah1tbaghdassarian/w2v-bert-2.0-armenian-colab-CV17.0_10epochs)
+
+- [citrinet_512_armenian-CV17.0](https://huggingface.co/anah1tbaghdassarian/stt_hy-AM_citrinet_512_armenian-CV17.0)
+
 
