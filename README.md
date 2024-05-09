@@ -1,41 +1,33 @@
-# Frontend for Speech Recognition Web App
+# Armenian Speech Recognition Project
 
-This repository contains the frontend codebase for the Armenian Speech Recognition Web Application. The application enables users to transcribe audio recordings in various formats using state-of-the-art speech recognition models.
+This project aims to develop a Speech-to-Text Recognition (STR) system for the Armenian language, addressing the need for advanced language processing technologies in this context. Leveraging state-of-the-art Automatic Speech Recognition (ASR) models, the system enables users to transcribe Armenian audio files with high accuracy and efficiency.
 
-## Features
+## Frontend
 
-- Record audio in real-time or upload audio files for transcription.
-- Choose from different speech recognition models.
-- Paste YouTube video links for transcription.
-- Register and login to create themed chats with transcriptions.
-- Subscribe for future updates and announcements.
+The frontend of the project is implemented using React.js, a popular JavaScript library for building user interfaces. It provides an intuitive interface for users to interact with various features, including:
 
-## Technologies Used
+- Recording and uploading audio files
+- Selecting from different speech recognition models
+- Viewing transcription results
+- User authentication and registration
 
-- HTML, CSS, JavaScript
-- React.js framework
-- Axios for HTTP requests
-- React Spinners for loading indicators
-- React Audio Recorder for audio recording functionality
 
-## Getting Started
+## Backend
 
-To run the frontend locally, follow these steps:
+The project's backend is developed using Java Spring Boot, a framework for building web applications. It handles critical operations such as user authentication, audio processing, and data management. Key components include:
 
-1. Clone this repository to your local machine.
-2. Install dependencies using `npm install.`
-3. Start the development server with `npm start`.
+- User authentication and registration
+- Audio processing using pre-trained models
+- Data storage and management with MongoDB
 
-## Folder Structure
 
-- `src/components`: Contains reusable components used across the application.
-- `src/pages`: Contains individual pages of the application (e.g., Home, Login, Register).
-- `src/assets`: Includes static assets such as images and audio files.
-- `src/utils`: Contains utility functions used throughout the application.
-- `src/App.js`: Main entry point of the application.
+## Cloud Deployment
 
-## Contributing
+The project is deployed on the Azure Cloud platform, leveraging virtual machine resources with 4v CPUs and 16GB of RAM. This infrastructure provides robust computational resources to support the efficient processing of audio data and the seamless operation of the system.
 
-Contributions to this project are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
 
+
+## Resources
+ Link to the folder with all trained models and notebooks.
+- [Transcription and model training notebooks](https://drive.google.com/drive/folders/1hTKSVjQSFG6m72KipGYokaHbaiU48plF)
 
