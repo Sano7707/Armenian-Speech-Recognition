@@ -1,6 +1,8 @@
 # Armenian Speech Recognition Project
 
 This project aims to develop a Speech-to-Text Recognition (STR) system for the Armenian language, addressing the need for advanced language processing technologies in this context. Leveraging state-of-the-art Automatic Speech Recognition (ASR) models, the system enables users to transcribe Armenian audio files with high accuracy and efficiency.
+- [Website Link.](https://armenian-speech-recognition.vercel.app/)
+
 
 ## Frontend
 
