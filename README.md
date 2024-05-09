@@ -31,7 +31,7 @@ The project is deployed on the Azure Cloud platform, leveraging virtual machine 
 
 ## Resources
  Link to the folder with all trained models and notebooks.
-- [Drive link for training notebooks and data](https://drive.google.com/drive/folders/1hTKSVjQSFG6m72KipGYokaHbaiU48plF)
+- [Drive link for data models, notebooks](https://drive.google.com/drive/folders/1hTKSVjQSFG6m72KipGYokaHbaiU48plF)[and the CM17.0 Dataset](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0)
 - [w2v-bert-2.0-armenian-CV17.0](https://huggingface.co/anah1tbaghdassarian/w2v-bert-2.0-armenian-CV17.0)
 
 - [quartznet15x5_armenian-CV17.0_WER11.75](https://huggingface.co/anah1tbaghdassarian/stt_hy-AM_quartznet15x5_armenian-CV17.0_WER11.75)
