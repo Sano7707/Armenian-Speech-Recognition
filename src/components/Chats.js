@@ -36,7 +36,7 @@ function Chats() {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats`, {
+      const response = await fetch(`https://armenianspeech.info/users/${userId}/chats`, {
         method: 'GET',
         headers: {
           'ngrok-skip-browser-warning': 'true',
@@ -136,7 +136,7 @@ function Chats() {
       setLoading(true);
       formData.append('chatTitle',user.chats[activeChatIndex].title);
       formData.append('url',youtubeLink);
-      fetch(`http://20.52.101.91:8081/process-audio-link/${userId}`, {
+      fetch(`https://armenianspeech.info/process-audio-link/${userId}`, {
         method: 'POST',
         body: formData
       })
@@ -189,7 +189,7 @@ function Chats() {
   
   
   const sendFormData = (formData) => {
-    fetch(`http://20.52.101.91:8081/process-audio/${userId}`, {
+    fetch(`https://armenianspeech.info/process-audio/${userId}`, {
       method: 'POST',
       body: formData,
     })
@@ -219,7 +219,7 @@ function Chats() {
     if (newChatTitle.trim() !== "") {
       const chatTitle = encodeURIComponent(newChatTitle.trim());
       try {
-        const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats?chatTitle=${chatTitle}`, {
+        const response = await fetch(`https://armenianspeech.info/users/${userId}/chats?chatTitle=${chatTitle}`, {
           method: 'POST',
         });
         if (response.ok) {
@@ -244,7 +244,7 @@ function Chats() {
     if (chatToDelete !== null) {
       const chatTitle = user.chats[chatToDelete].title;
       try {
-        const response = await fetch(`http://20.52.101.91:8081/users/${userId}/chats?chatTitle=${encodeURIComponent(chatTitle)}`, {
+        const response = await fetch(`https://armenianspeech.info/users/${userId}/chats?chatTitle=${encodeURIComponent(chatTitle)}`, {
           method: 'DELETE'
         });
         if (response.ok) {
@@ -398,7 +398,7 @@ const ChatMessage = ({ message }) => {
 
   useEffect(() => {
     if (message.user === "me") {
-      fetch(`http://20.52.101.91:8081/audio/${encodeURIComponent(message.message)}`, {
+      fetch(`https://armenianspeech.info/audio/${encodeURIComponent(message.message)}`, {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         // other headers if needed

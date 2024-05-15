@@ -18,7 +18,7 @@ function App() {
     try {
       const userId = sessionStorage.getItem('userId');
       if (userId) {
-        const response = await axios.get(`http://20.52.101.91:8081/users/${userId}`);
+        const response = await axios.get(`https://armenianspeech.info/users/${userId}`);
         const userData = response.data;
         setUserName(userData);
       }

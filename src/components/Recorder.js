@@ -75,8 +75,7 @@ function Recorder() {
     if (youtubeLink) {
       setProcessing(true);
       setLoading(true);
-      //http://http://20.52.101.91:8081
-      fetch(`http://20.52.101.91:8081/process-audio-link?url=${youtubeLink}`, {
+      fetch(`https://armenianspeech.info/process-audio-link?url=${youtubeLink}`, {
         method: 'POST',
       })
         .then((response) => response.text())
@@ -118,7 +117,7 @@ function Recorder() {
   };
 
   const sendFormData = (formData) => {
-    fetch('http://20.52.101.91:8081/process-audio', {
+    fetch('https://armenianspeech.info/process-audio', {
       method: 'POST',
       body: formData,
     })

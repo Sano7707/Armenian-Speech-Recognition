@@ -19,7 +19,7 @@ function Register() {
         password
       };
 
-      const response = await axios.post('http://20.52.101.91:8081/register', userData);
+      const response = await axios.post('https://armenianspeech.info/register', userData);
 
       if (response.status === 201) {
         console.log('User registered:', response.data);

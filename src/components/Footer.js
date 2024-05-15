@@ -17,7 +17,7 @@ function Footer() {
     setLoading(true); // Set loading state to true when subscription request starts
   
     try {
-      const response = await fetch(`http://20.52.101.91:8081/subscribe?email=${email}`, {
+      const response = await fetch(`https://armenianspeech.info/subscribe?email=${email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

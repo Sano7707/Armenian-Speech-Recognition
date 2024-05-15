@@ -12,7 +12,7 @@ function LoginPage({ onLogin }) {
 
   const handleLogin = async () => {
     try {
-      const url = `http://20.52.101.91:8081/login?email=${email}&password=${password}`;
+      const url = `https://armenianspeech.info/login?email=${email}&password=${password}`;
       const response = await axios.get(url);
       const userData = response.data;
       // Save user ID in session storage
