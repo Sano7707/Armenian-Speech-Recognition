@@ -193,6 +193,9 @@ function Recorder() {
               <option value="Microsoft Azure">Microsoft Azure</option>
               <option value="Whisper Small">Whisper Small</option>
               <option value="Wav2Vec2-BERT">Wav2Vec2-BERT</option>
+              <option value="QuartzNet15x5">QuartzNet15x5</option>
+              <option value="Citrinet">Citrinet</option>
+
             </select>
           </div>
           <textarea
