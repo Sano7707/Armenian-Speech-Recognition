@@ -75,7 +75,7 @@ function Recorder() {
     if (youtubeLink) {
       setProcessing(true);
       setLoading(true);
-      fetch(`https://armenianspeech.info/process-audio-link?url=${youtubeLink}`, {
+      fetch(`https://armenianspeech.info/process-audio-link?url=${encodeURIComponent(youtubeLink)}&modelName=${encodeURIComponent(selectedModel)}`, {
         method: 'POST',
       })
         .then((response) => response.text())
@@ -189,7 +189,7 @@ function Recorder() {
           )}
           <p>Choose a model</p>
           <div className="select-wrapper">
-            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} disabled={youtubeLink}>
+            <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} >
               <option value="Microsoft Azure">Microsoft Azure</option>
               <option value="Seamless">Seamless</option>
               <option value="Whisper Small">Whisper Small</option>

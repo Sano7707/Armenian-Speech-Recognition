@@ -136,6 +136,7 @@ function Chats() {
       setLoading(true);
       formData.append('chatTitle',user.chats[activeChatIndex].title);
       formData.append('url',youtubeLink);
+      formData.append('modelName',selectedModel);
       fetch(`https://armenianspeech.info/process-audio-link/${userId}`, {
         method: 'POST',
         body: formData
@@ -343,7 +344,7 @@ function Chats() {
           )}
           <p>Choose a model</p>
             <div className="select-wrapper">
-              <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} disabled={youtubeLink}>
+              <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
                 <option value="Microsoft Azure">Microsoft Azure</option>
                 <option value="Seamless">Seamless</option>
                 <option value="Whisper Small">Whisper Small</option>
