@@ -139,6 +139,9 @@ function Recorder() {
     setAudioUrl(null);
     setUploadedFile(null);
     setFileName('');
+    if(youtubeLink){
+      setSelectedModel("Seamless")
+    }
   };
   
   return (
