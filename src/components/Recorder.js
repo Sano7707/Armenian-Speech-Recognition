@@ -139,9 +139,8 @@ function Recorder() {
     setAudioUrl(null);
     setUploadedFile(null);
     setFileName('');
-    if(youtubeLink){
-      setSelectedModel("Seamless")
-    }
+    setSelectedModel("Seamless")
+
   };
   
   return (
@@ -199,7 +198,6 @@ function Recorder() {
               <option value="Wav2Vec2-BERT">Wav2Vec2-BERT</option>
               <option value="QuartzNet15x5">QuartzNet15x5</option>
               <option value="Citrinet">Citrinet</option>
-
             </select>
           </div>
           <textarea
