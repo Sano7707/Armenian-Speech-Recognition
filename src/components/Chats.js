@@ -345,6 +345,7 @@ function Chats() {
             <div className="select-wrapper">
               <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} disabled={youtubeLink}>
                 <option value="Microsoft Azure">Microsoft Azure</option>
+                <option value="Seamless">Seamless</option>
                 <option value="Whisper Small">Whisper Small</option>
                 <option value="Wav2Vec2-BERT">Wav2Vec2-BERT</option>
                 <option value="QuartzNet15x5">QuartzNet15x5</option>
