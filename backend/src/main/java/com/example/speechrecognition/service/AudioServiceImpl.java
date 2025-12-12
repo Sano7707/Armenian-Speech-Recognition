@@ -96,7 +96,7 @@ public class AudioServiceImpl implements AudioService{
     @Override
     public String speechToTextByAzure(File audioFile) {
         try {
-            String speechKey = "2b6ef53c34a34deead8f2c3fad50d9a8";
+            String speechKey = "YOUR_KEY";
             String speechRegion = "eastus";
             SpeechConfig speechConfig = SpeechConfig.fromSubscription(speechKey, speechRegion);
             speechConfig.setSpeechRecognitionLanguage("hy-AM");
